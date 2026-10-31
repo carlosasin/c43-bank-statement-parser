@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "outDir": "dist/esm",
+    "types": []
+  },
+  "include": ["src/browser.ts", "src/parser.ts", "src/types.ts"],
+  "exclude": ["dist", "node_modules"]
+}

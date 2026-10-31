@@ -1,0 +1,58 @@
+{
+  "name": "c43-bank-statement-parser",
+  "version": "1.0.0",
+  "description": "A TypeScript library to parse C43 account export files",
+  "main": "./dist/cjs/node.js",
+  "module": "./dist/esm/browser.js",
+  "types": "./dist/cjs/node.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/cjs/node.d.ts",
+      "browser": "./dist/esm/browser.js",
+      "node": {
+        "import": "./dist/esm/node.js",
+        "require": "./dist/cjs/node.js",
+        "default": "./dist/esm/node.js"
+      },
+      "default": "./dist/esm/browser.js"
+    },
+    "./node": {
+      "types": "./dist/cjs/node.d.ts",
+      "browser": null,
+      "node": {
+        "import": "./dist/esm/node.js",
+        "require": "./dist/cjs/node.js",
+        "default": "./dist/esm/node.js"
+      },
+      "default": null
+    }
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.browser.json && tsc -p tsconfig.esm.json && node -e \"require('node:fs').writeFileSync('dist/esm/package.json', JSON.stringify({ type: 'module' }))\"",
+    "check": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.browser.json --noEmit && tsc -p tsconfig.esm.json --noEmit",
+    "test": "npm run build && node --test --test-concurrency=1 test/*.test.mjs",
+    "prepack": "npm run build"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "c43",
+    "banking",
+    "parser",
+    "typescript"
+  ],
+  "author": "Carlos Asín",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.12.0",
+    "typescript": "^7.0.2"
+  }
+}

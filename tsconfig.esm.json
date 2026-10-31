@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.browser.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "outDir": "dist/esm",
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules"]
+}
