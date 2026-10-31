@@ -28,9 +28,7 @@
     }
   },
   "sideEffects": false,
-  "engines": {
-    "node": ">=22"
-  },
+  "engines": { "node": ">=22" },
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "npm run clean && tsc -p tsconfig.json && tsc -p tsconfig.browser.json && tsc -p tsconfig.esm.json && node -e \"require('node:fs').writeFileSync('dist/esm/package.json', JSON.stringify({ type: 'module' }))\"",
@@ -38,19 +36,16 @@
     "test": "npm run build && node --test --test-concurrency=1 test/*.test.mjs",
     "prepack": "npm run build"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "keywords": [
-    "c43",
-    "banking",
-    "parser",
-    "typescript"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": ["c43", "banking", "parser", "typescript"],
   "author": "Carlos Asín",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosasin/c43-bank-statement-parser.git"
+  },
+  "homepage": "https://github.com/carlosasin/c43-bank-statement-parser#readme",
+  "bugs": { "url": "https://github.com/carlosasin/c43-bank-statement-parser/issues" },
   "devDependencies": {
     "@types/node": "^22.12.0",
     "typescript": "^7.0.2"
